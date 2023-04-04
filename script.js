@@ -17,8 +17,13 @@ const input = (number) => {
             prevNumber += number;
             display.value = prevNumber;
         } else {
-            currentNumber += number;
-            display.value = currentNumber;
+            if (calculationOperator === '%') {
+                currentNumber += number;
+                display.value = `(${prevNumber}${calculationOperator}) × ${currentNumber}`                    
+            } else {
+                currentNumber += number;
+                display.value = prevNumber + calculationOperator + currentNumber    
+            }
         }
     }
 }
@@ -33,7 +38,10 @@ numbers.forEach((number) => {
 // Mengatur tombol operators
 operators.forEach((operator) => {
     operator.addEventListener('click', (event) => {
-        calculationOperator = event.target.value;
+        if(prevNumber !== '') {
+            calculationOperator = event.target.value
+            display.value = prevNumber + calculationOperator
+        }
     });
 });
 
