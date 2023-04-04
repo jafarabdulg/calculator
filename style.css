@@ -66,3 +66,16 @@ td {
 .display:focus {
     outline: none;
 }
+
+/* responsive css */
+@media (max-width: 1000px) {
+    table {
+        width: 70%;
+    }
+}
+
+@media (max-width: 670px) {
+    table {
+        width: 80%;
+    }
+}
